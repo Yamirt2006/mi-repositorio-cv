@@ -1,0 +1,294 @@
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables Globales - Estilo Spider-Man */
+:root {
+    --spidey-red: #e60000;
+    --spidey-red-dark: #b30000;
+    --spidey-blue: #0066cc;
+    --spidey-blue-dark: #004499;
+    --spidey-dark-bg: #0d1117;
+    --spidey-card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --shadow-soft: 0 4px 12px rgba(230, 0, 0, 0.15);
+    --shadow-hover: 0 12px 24px rgba(0, 102, 204, 0.25);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Modo Oscuro Automático */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --spidey-card-bg: #161b22;
+        --text-primary: #f0f6fc;
+        --text-secondary: #8b949e;
+        --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.5);
+        --shadow-hover: 0 12px 24px rgba(230, 0, 0, 0.3);
+    }
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0a0e17 0%, #1a1e29 50%, #0d1117 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+}
+
+.cv-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--spidey-card-bg);
+    border-radius: 16px;
+    padding: 2.5rem;
+    border: 2px solid var(--spidey-red);
+    box-shadow: 0 0 20px rgba(230, 0, 0, 0.2);
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Header y Fotografía */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 3px solid var(--spidey-red);
+}
+
+.avatar-wrapper {
+    flex-shrink: 0;
+}
+
+.profile-avatar {
+    width: 150px;
+    height: 190px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    border: 4px solid var(--spidey-red);
+    outline: 3px solid var(--spidey-blue);
+    box-shadow: 0 8px 20px rgba(0, 102, 204, 0.4);
+    transition: var(--transition-smooth);
+}
+
+.profile-avatar:hover {
+    transform: scale(1.05) rotate(2deg);
+    outline-color: var(--spidey-red);
+    border-color: var(--spidey-blue);
+    box-shadow: 0 12px 28px rgba(230, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+.profile-title h1 {
+    font-size: 2.2rem;
+    color: var(--spidey-red);
+    letter-spacing: -0.02em;
+    font-weight: 800;
+}
+
+.profile-title h2 {
+    font-size: 1.3rem;
+    color: var(--spidey-blue);
+    font-weight: 700;
+    margin-top: 0.25rem;
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+/* Secciones Generales */
+.cv-section {
+    margin-top: 2rem;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    color: var(--spidey-red);
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40%;
+    height: 3px;
+    background-color: var(--spidey-blue);
+    border-radius: 2px;
+    transition: var(--transition-smooth);
+}
+
+.cv-section:hover .section-title::after {
+    width: 100%;
+    background-color: var(--spidey-red);
+}
+
+/* Grilla de Habilidades (Skill Badges) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.skill-badge {
+    background-color: rgba(0, 102, 204, 0.08);
+    color: var(--spidey-blue);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    border: 1px solid var(--spidey-blue);
+    transition: var(--transition-smooth);
+}
+
+.skill-badge:hover {
+    background-color: var(--spidey-red);
+    color: #ffffff;
+    border-color: var(--spidey-red);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(230, 0, 0, 0.4);
+}
+
+/* Grilla de Proyectos y Educación */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.project-card {
+    background: var(--spidey-card-bg);
+    border: 1px solid rgba(0, 102, 204, 0.3);
+    border-left: 5px solid var(--spidey-red);
+    padding: 1.25rem;
+    border-radius: 8px;
+    transition: var(--transition-smooth);
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+    border-left-color: var(--spidey-blue);
+    border-color: var(--spidey-blue);
+}
+
+.project-card h4 {
+    color: var(--spidey-red);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.project-tech {
+    font-size: 0.85rem;
+    color: var(--spidey-blue);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+}
+
+/* Lista de Fortalezas */
+.strengths-list {
+    list-style: none;
+    padding-left: 0.5rem;
+}
+
+.strengths-list li {
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+/* Pie de Página / Contacto */
+.cv-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 3px solid var(--spidey-red);
+}
+
+.contact-info {
+    font-style: normal;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.contact-info a {
+    color: var(--spidey-blue);
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition-smooth);
+}
+
+.contact-info a:hover {
+    color: var(--spidey-red);
+    text-decoration: underline;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Diseños Responsivos */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem 0.5rem;
+    }
+
+    .cv-container {
+        padding: 1.5rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.25rem;
+    }
+
+    .profile-avatar {
+        width: 130px;
+        height: 165px;
+    }
+
+    .profile-title h1 {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
